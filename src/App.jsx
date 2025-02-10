@@ -268,15 +268,38 @@ function App() {
     }
   }, [timeLeft, gameOver, score, highScore, gameStarted]);
 
+  // Initialize the game
+  useEffect(() => {
+    if (gameStarted) {
+      selectNewWord();
+    }
+  }, [difficulty, gameStarted]);
 
+  // Theme toggle
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+  };
 
+  // Start the game
+  const startGame = () => {
+    setGameStarted(true);
+    setTimeLeft(30);
+    setScore(0);
+    setGameOver(false);
+    setUserGuess("");
+    setFeedback("");
+    setShowHint(false);
+  };
 
-
-
+  // Stop the game
+  const stopGame = () => {
+    setGameStarted(false);
+    setGameOver(true);
+  };
 
   return (
     <div className={`App ${theme}`}>
-      <FloatingLetters /> {/* Add this line */}
+      
       <h1>Word Scramble Game</h1>
       {!gameStarted ? (
         <div className="start-screen">
