@@ -299,7 +299,7 @@ function App() {
 
   return (
     <div className={`App ${theme}`}>
-      
+      <FloatingLetters /> {/* Add this line */}
       <h1>Word Scramble Game</h1>
       {!gameStarted ? (
         <div className="start-screen">
