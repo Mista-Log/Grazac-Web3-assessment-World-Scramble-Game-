@@ -1,0 +1,290 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f9;
+  overflow: hidden; /* Prevent scrollbars from appearing due to animations */
+}
+
+/* Background animation */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #007bff, #28a745, #dc3545, #ffc107);
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+  z-index: -1;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Floating letters animation */
+.floating-letters {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.floating-letters span {
+  position: absolute;
+  display: block;
+  font-size: 2rem;
+  color: #007bff; /* Blue color for both light and dark themes */
+  opacity: 0.2; /* Make the letters semi-transparent */
+  animation: float 10s linear infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(-10%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.2; /* Keep the opacity consistent */
+  }
+  100% {
+    transform: translateY(110%);
+    opacity: 0;
+  }
+}
+
+.App {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.App.dark {
+  background: rgba(51, 51, 51, 0.9); /* Semi-transparent dark background */
+  color: #fff;
+}
+
+h1 {
+  color: #333;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.App.dark h1 {
+  color: #fff;
+}
+
+.start-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.start-button {
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.start-button:hover {
+  background-color: #0056b3;
+}
+
+.settings {
+  margin-bottom: 1rem;
+}
+
+.settings label {
+  margin-right: 1rem;
+}
+
+.settings select {
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+.theme-toggle {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  background-color: #0056b3;
+}
+
+.game-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.App.dark .game-info {
+  color: #ddd;
+}
+
+.progress-bar {
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  height: 10px;
+  margin-bottom: 1rem;
+}
+
+.progress {
+  background-color: #007bff;
+  height: 100%;
+  border-radius: 5px;
+  transition: width 1s linear;
+}
+
+.scrambled-word {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 1rem 0;
+}
+
+.letter-tile {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+}
+
+.letter-tile:hover {
+  transform: scale(1.1);
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 80%;
+  max-width: 300px;
+}
+
+.App.dark input {
+  background-color: #444;
+  color: #fff;
+  border-color: #666;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.stop-button {
+  background-color: #dc3545;
+  margin-top: 1rem; /* Move the Stop Game button down */
+}
+
+.stop-button:hover {
+  background-color: #c82333;
+}
+
+.feedback {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.App.dark .feedback {
+  color: #fff;
+}
+
+.hint-button {
+  margin-top: 1rem;
+  background-color: #28a745;
+}
+
+.hint-button:hover {
+  background-color: #218838;
+}
+
+.hint {
+  margin-top: 1rem;
+  color: #666;
+  font-style: italic;
+}
+
+.App.dark .hint {
+  color: #ddd;
+}
+
+.game-over {
+  margin-top: 2rem;
+}
+
+.game-over h2 {
+  color: #dc3545;
+}
+
+.App.dark .game-over h2 {
+  color: #ff6b6b;
+}
+
+.game-over button {
+  background-color: #007bff;
+  margin-top: 1rem;
+}
+
+.game-over button:hover {
+  background-color: #0056b3;
+}
